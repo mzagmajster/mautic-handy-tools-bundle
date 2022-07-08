@@ -23,7 +23,6 @@ class NotifyUpdatesCommand extends ContainerAwareCommand
     private function sendSlackMessage($message, $type)
     {
         $coreParametersHelper = $this->getContainer()->get('mautic.helper.core_parameters');
-        //$slackUrl = 'https://hooks.slack.com/services/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';
 
         //Options
         $slackUrl = $coreParametersHelper->get('mz_hdb_slack_hook');
