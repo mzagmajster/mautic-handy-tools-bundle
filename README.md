@@ -1,4 +1,4 @@
-# Mautic Plugin Boilerplate
+# Mautic Handy Tools Bundle
 
 Empty Mautic plugin bundle (zero functionality). Tested on **Mautic 3.3.3**. Go ahead use this boilerplate and provide more custom functionality to Mautic - Open source Marketing Automation Tool.
 
@@ -7,7 +7,7 @@ Empty Mautic plugin bundle (zero functionality). Tested on **Mautic 3.3.3**. Go 
 ### Prerequisites
 
 * Composer 1
-* Mautic 3
+* Mautic 4
 
 
 ### Installing
@@ -24,7 +24,7 @@ Use hooks from .githooks folder on project by executing:
 cd <mautic-root-folder>
 rm -rf var/cache/dev/* var/cache/prod/*
 cd plugins
-git clone <repo-url> MauticHelloWorldBundle
+git clone <repo-url> MZagmajsterHandyToolsBundle
 cd <mautic-root-folder>
 composer install  # You only need this druing development.
 php bin/console mautic:plugins:install --dev  # You should get a message saying one or more plugins have been installed in terminal.
@@ -38,7 +38,7 @@ Typical **update** of plugin source code described below.
 ```
 cd <mautic-root-folder>
 rm -rf var/cache/dev/* var/cache/prod/*
-cd plugins/MauticHelloWorldBundle
+cd plugins/MZagmajsterHandyToolsBundle
 git pull origin <branch>
 php bin/console mautic:plugins:reload --dev  # You should get a message saying one or more plugins have been installed in terminal.
 ```
@@ -77,7 +77,9 @@ From plugin root folder you can also run the following commands during developme
 
 ## Contributing
 
-Please read ```CONTRIBUTING.md``` for details on our code of conduct, and the process for submitting pull requests to us.
+* If you have a suggestion for the feature or improvement consider opening an issue on GitHub (just make sure the same issue does not already exists).
+* If you want, you can open a pull request and I will make an effort to merge it.
+* Finally if this project was helpful to you **consider supporting it with a donation** via [PayPal](https://paypal.me/maticzagmajster). **Thank you!**
 
 ## Versioning
 

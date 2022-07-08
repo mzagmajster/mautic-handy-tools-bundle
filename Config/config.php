@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 return [
-    'name'        => 'Hello World',
-    'description' => 'Mautic Plugin Boilerplate',
-    'version'     => '0.0.0',
+    'name'        => 'MZagmajsterHandyToolsBundle',
+    'description' => 'Handy tools for managing Mautic instance',
+    'version'     => '0.0.1',
     'author'      => 'Matic Zagmajster',
 
     'routes'      => [
