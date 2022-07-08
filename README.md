@@ -62,6 +62,17 @@ From plugin root folder you can also run the following commands during developme
 * You do not have to install any composer packages inside plugin folder since we only use it during development.
 * When you are deploying the plugin make sure you call ```php bin/console``` command without --dev switch.
 
+## Usage
+
+In your app/config/local.php file add the following settings:
+
+* Slack hook under the key ```mz_hdb_slack_hook```.
+* Slack channel under the key ```mz_hdb_slack_channel```
+
+Add cronjob on your server that runs the command provided by this plugin. For example (check for new version once a day)
+
+```50 15 * * * /usr/bin/php <mautic-root>/bin/console mz:update:notify```
+
 ## Changelog
 
 [No changelog yet.]
