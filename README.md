@@ -1,13 +1,18 @@
 # Mautic Handy Tools Bundle
 
-Empty Mautic plugin bundle (zero functionality). Tested on **Mautic 3.3.3**. Go ahead use this boilerplate and provide more custom functionality to Mautic - Open source Marketing Automation Tool.
+Some Handy Tools for managing Mautic.
+
+Features:
+
+* Send Slack notification when new Mautic version is out.
+* Change Mautic user password
 
 ## Getting Started
 
 ### Prerequisites
 
-* Composer 1
-* Mautic 4
+* Composer 2
+* Mautic 5
 
 
 ### Installing
@@ -64,6 +69,8 @@ From plugin root folder you can also run the following commands during developme
 
 ## Usage
 
+### Send Slack notification
+
 In your app/config/local.php file add the following settings:
 
 * Slack hook under the key ```mz_hdb_slack_hook```.
@@ -72,6 +79,21 @@ In your app/config/local.php file add the following settings:
 Add cronjob on your server that runs the command provided by this plugin. For example (check for new version once a day)
 
 ```50 15 * * * /usr/bin/php <mautic-root>/bin/console mz:update:notify```
+
+#### Change Mautic Password
+
+Run the command below to enter password on the terminal.
+
+```
+php bin/console mz:change:password --user-id=1
+# It will ask you to change the password.
+```
+
+or... pass it as option
+
+```
+php bin/console mz:change:password --user-id=1 --password=<password>
+```
 
 ## Changelog
 
