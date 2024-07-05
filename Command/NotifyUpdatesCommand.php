@@ -1,30 +1,20 @@
 <?php
 
-/*
- * @copyright   2014 Mautic Contributors. All rights reserved
- * @author      Mautic
- *
- * @link        http://mautic.org
- *
- * @license     GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
- */
-
 namespace MauticPlugin\MZagmajsterHandyToolsBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * CLI Command to send Slack notification about new mautic version of Mautic.
  */
-class NotifyUpdatesCommand extends ContainerAwareCommand
+class NotifyUpdatesCommand extends Command
 {
-    private function sendSlackMessage($message, $type)
+    private function sendSlackMessage($message, $type): mixed
     {
         $coreParametersHelper = $this->getContainer()->get('mautic.helper.core_parameters');
 
-        //Options
+        // Options
         $slackUrl = $coreParametersHelper->get('mz_hdb_slack_hook');
         $channel  = $coreParametersHelper->get('mz_hdb_slack_channel');
         $siteUrl  = $coreParametersHelper->get('site_url');
@@ -64,11 +54,11 @@ class NotifyUpdatesCommand extends ContainerAwareCommand
         curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Content-Type: application/json',
-                'Content-Length: '.strlen($dataString), ]
-            );
+            'Content-Type: application/json',
+            'Content-Length: '.strlen($dataString), ]
+        );
 
-        //Execute CURL
+        // Execute CURL
         $result = curl_exec($ch);
 
         return $result;
@@ -77,7 +67,7 @@ class NotifyUpdatesCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('mz:update:notify')
             ->setDescription('Send notification to Slack')
@@ -86,13 +76,13 @@ The <info>%command.name%</info> command sends Slack notification if newer versio
 
 <info>php %command.full_name%</info>
 EOT
-        );
+            );
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var \Symfony\Bundle\FrameworkBundle\Translation\Translator $translator */
         $translator = $this->getContainer()->get('translator');
